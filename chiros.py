@@ -1,12 +1,14 @@
-from kivy.app import App
-from kivy.uix.widget import Widget
+import sys
+from PySide6.QtGui import QGuiApplication
+from PySide6.QtQml import QQmlApplicationEngine
 
-class MyPaintWidget(Widget):
-    pass
-
-class MyPaintApp(App):
-    def build(self):
-        return MyPaintWidget()
-
-if __name__ == '__main__':
-    MyPaintApp().run()
+if __name__ == "__main__":
+    app = QGuiApplication(sys.argv)
+    engine = QQmlApplicationEngine()
+    engine.addImportPath(sys.path[0])
+    engine.loadFromModule("ui", "Main")
+    if not engine.rootObjects():
+        sys.exit(-1)
+    exit_code = app.exec()
+    del engine
+    sys.exit(exit_code)
