@@ -9,16 +9,31 @@ Window {
     title: "Chiros"
     visibility: Window.Maximized
 
-    readonly property list<string> texts: ["Hallo Welt", "Hei maailma",
-                                           "Hola Mundo", "Привет мир"]
-
-    function setText() {
-        var i = Math.round(Math.random() * 3)
-        text.text = texts[i]
-    }
-
-    Rectangle {
+    RowLayout {
         anchors.fill: parent
-        color: "blue"
+        spacing: 0
+        
+        // Left tool box
+        Rectangle {
+            color: "#f0f0f0"
+            Layout.preferredWidth: 100
+            Layout.preferredHeight: 300
+        }
+
+        // Drawing area
+        Rectangle {
+            color: "#ffffff"
+            border.color: "#cccccc"
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            MouseArea {
+                anchors.fill: parent
+
+                onPressed: (mouse) => {
+                    console.log("Mouse pressed at: " + mouse.x + ", " + mouse.y);
+                }
+            }
+        }
     }
 }
