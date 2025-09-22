@@ -6,7 +6,8 @@ Window {
     width: 300
     height: 200
     visible: true
-    title: "Hello World 20"
+    title: "Chiros"
+    visibility: Window.Maximized
 
     readonly property list<string> texts: ["Hallo Welt", "Hei maailma",
                                            "Hola Mundo", "Привет мир"]
